@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'LucasLight';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/NespressoLucas-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'LucasRegular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/NespressoLucas-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'LucasMedium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/NespressoLucas-Med.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'LucasSemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/NespressoLucas-SemiBd.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'LucasBold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/NespressoLucas-Bold.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'LucasRegular', sans-serif;
+}
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: #faf9f8;
+  overflow: hidden;
+}
