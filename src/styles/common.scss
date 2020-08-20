@@ -45,7 +45,7 @@
 }
 .content {
   position: relative;
-  padding: 30px 20px 30px 50px;
+  padding: 30px 20px 15px 50px;
   .main-line {
     position: absolute;
     background: linear-gradient(180deg, rgba(46,133,97,1) 0%, rgba(221,221,221,1) 80%);
@@ -85,6 +85,7 @@
     h2 {
       font-weight: 300;
       letter-spacing: 1px;
+      margin-bottom: 20px;
     }
   }
   .active {
@@ -95,8 +96,21 @@
       }
     }
     h2 {
+      font-family: 'LucasSemiBd', sans-serif;
       font-weight: 600;
     }
+  }
+}
+.help-action {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding-bottom: 25px;
+  span {
+    font-family: 'LucasSemiBold', sans-serif;
+  }
+  .btn_help_in_touch {
+    color: $color-brown;
   }
 }
 .footer {

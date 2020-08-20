@@ -1,5 +1,7 @@
 import React from 'react';
 import AnimateHeight from 'react-animate-height';
+import MachineForm from "./MachineForm";
+import '../../styles/machine.scss';
 
 class Machine extends React.Component {
     state = {
@@ -13,9 +15,12 @@ class Machine extends React.Component {
     }
     render() {
         const {height} = this.state;
+        const {lang, machineData, addMachineInfo} = this.props;
         return (
             <AnimateHeight duration={500} height={height}>
-                <p>Machine</p>
+                <div className="section-machine">
+                    <MachineForm lang={lang} data={machineData} addMachineInfo={addMachineInfo} />
+                </div>
             </AnimateHeight>
         )
     }

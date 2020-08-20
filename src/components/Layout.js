@@ -3,19 +3,24 @@ import Header from './common/header';
 import Footer from './common/footer';
 import Section from './Section';
 import '../styles/common.scss';
+import lang from '../languages/language_en';
 
 const sections = [
-    {id: 1, title: 'Machine registration'},
-    {id: 2, title: 'Select your offer'},
-    {id: 3, title: 'Customer registration'},
-    {id: 4, title: 'Order summary'}
+    {id: 1, title: lang.section_machine_title},
+    {id: 2, title: lang.section_shop_title},
+    {id: 3, title: lang.section_customer_title},
+    {id: 4, title: lang.section_summary_title}
 ];
 class Layout extends React.Component {
     state = {
-        active: 1
+        active: 1,
+        modal_help: false
     }
     activateSection = id => {
         this.setState({active: id});
+    }
+    showHelpModal = () => {
+        this.setState({modal_help: true});
     }
     render() {
         const {active} = this.state;
@@ -24,7 +29,11 @@ class Layout extends React.Component {
                 <Header amount={0} />
                 <div className="content">
                     <div className="main-line">{}</div>
-                    {sections.map(el => <Section key={el.id} content={el} active={active} activateSection={() => this.activateSection(el.id)} />)}
+                    {sections.map(el => <Section key={el.id} content={el} active={active} activateSection={() => this.activateSection(el.id)} lang={lang} />)}
+                </div>
+                <div className="help-action">
+                    <span>{lang.label_help_in_touch}</span>
+                    <span className="btn_help_in_touch" onClick={this.showHelpModal}>{lang.btn_help_in_touch}</span>
                 </div>
                 <Footer />
             </div>
