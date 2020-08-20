@@ -13,5 +13,11 @@ export default {
     error_serial: 'Wrong serial number',
     serial_number_label: 'machine serial number',
     label_help_in_touch: 'Need help? ',
-    btn_help_in_touch: 'Get in touch'
+    btn_help_in_touch: 'Get in touch',
+    modal_help_title: 'Get in touch with a Coffee specialist.',
+    modal_help_text: 'Our coffee Specialists are here to answer all your questions and advise you. Please select a contact method below.',
+    modal_help_btn1: 'start a chat',
+    modal_help_btn2: 'send an email',
+    modal_help_input_label: 'Or contact us by phone:',
+    modal_serial_help_title: 'Find your machine serial number'
 }

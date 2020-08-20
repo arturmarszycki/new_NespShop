@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './common/header';
 import Footer from './common/footer';
 import Section from './Section';
+import GetInTouch from './common/GetInTouch';
+import ModalFrame from './common/ModalFrame';
 import '../styles/common.scss';
 import lang from '../languages/language_en';
 
@@ -22,8 +24,11 @@ class Layout extends React.Component {
     showHelpModal = () => {
         this.setState({modal_help: true});
     }
+    hideHelpModal = () => {
+        this.setState({modal_help: false});
+    }
     render() {
-        const {active} = this.state;
+        const {active, modal_help} = this.state;
         return (
             <div className="container">
                 <Header amount={0} />
@@ -35,6 +40,7 @@ class Layout extends React.Component {
                     <span>{lang.label_help_in_touch}</span>
                     <span className="btn_help_in_touch" onClick={this.showHelpModal}>{lang.btn_help_in_touch}</span>
                 </div>
+                {modal_help && <ModalFrame hideModal={this.hideHelpModal}><GetInTouch lang={lang} /></ModalFrame>}
                 <Footer />
             </div>
         )

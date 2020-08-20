@@ -27,7 +27,7 @@ class InputSerial extends React.Component {
     }
     render() {
         const {serial, error} = this.state;
-        const {lang} = this.props;
+        const {lang, showSerialHelp} = this.props;
         return (
             <form action="">
                 <div className="serial-input">
@@ -52,7 +52,7 @@ class InputSerial extends React.Component {
                             {error && <span className="error-msg">{lang.error_serial}</span>}
                         </div>
                         <p className="si-txt4">{lang.serial_confirm_label}</p>
-                        <p className="btn_serial-help">{lang.serial_where_to_find} &gt;</p>
+                        <p className="btn_serial-help" onClick={showSerialHelp}>{lang.serial_where_to_find} &gt;</p>
                     </div>
                     <button onClick={this.submitSerial}>{lang.btn_serial_confirm}</button>
                 </div>
