@@ -4,6 +4,7 @@ import Footer from './common/footer';
 import Section from './Section';
 import GetInTouch from './common/GetInTouch';
 import ModalFrame from './common/ModalFrame';
+import HelpAction from './common/HelpAction';
 import '../styles/common.scss';
 import lang from '../languages/language_en';
 
@@ -36,10 +37,7 @@ class Layout extends React.Component {
                     <div className="main-line">{}</div>
                     {sections.map(el => <Section key={el.id} content={el} active={active} activateSection={() => this.activateSection(el.id)} lang={lang} />)}
                 </div>
-                <div className="help-action">
-                    <span>{lang.label_help_in_touch}</span>
-                    <span className="btn_help_in_touch" onClick={this.showHelpModal}>{lang.btn_help_in_touch}</span>
-                </div>
+                <HelpAction lang={lang} showHelpModal={this.showHelpModal} />
                 {modal_help && <ModalFrame hideModal={this.hideHelpModal}><GetInTouch lang={lang} /></ModalFrame>}
                 <Footer />
             </div>

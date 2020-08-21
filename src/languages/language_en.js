@@ -19,5 +19,7 @@ export default {
     modal_help_btn1: 'start a chat',
     modal_help_btn2: 'send an email',
     modal_help_input_label: 'Or contact us by phone:',
-    modal_serial_help_title: 'Find your machine serial number'
+    modal_serial_help_title: 'Find your machine serial number',
+    serial_number_photo_label: 'Serial number photo',
+    photo_edit_label: 'Edit'
 }
