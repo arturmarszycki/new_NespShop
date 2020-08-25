@@ -6,7 +6,7 @@ class Barcode extends React.Component {
         image_preview_URL: null
     }
     fileHandler = e => {
-        this.setState({image: e.target.files[0]}, () => this.props.startLoader('serialklubnespresso'));
+        this.setState({image: e.target.files[0]}, () => this.props.startLoader('serialklubnespresso', 'graphic'));
         this.fileReader(e.target.files[0]);
     }
     fileReader = file => {

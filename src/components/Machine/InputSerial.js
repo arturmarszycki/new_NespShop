@@ -12,11 +12,16 @@ class InputSerial extends React.Component {
         inputClasses: '',
         labelClasses: ''
     }
-    barcodeLoader = number => {
+    barcodeLoader = (number, graphic) => {
         if (!this.state.confirmed) {
             this.setState({barcode: true}, () => {
                 setTimeout(() => {
-                    this.setState({barcode: false, serial: number}, () => this.confirmSerial(number));
+                    this.setState({barcode: false, serial: number}, () => {
+                        this.confirmSerial(number);
+                        if (graphic) {
+                            this.props.graphicActions();
+                        }
+                    });
                 }, 2000);
             });
         }
@@ -41,6 +46,12 @@ class InputSerial extends React.Component {
             await this.barcodeLoader(serial);
         }
     }
+    componentDidUpdate(prevProps) {
+        if (this.props.imagePreview !== prevProps.imagePreview && this.props.imagePreview === null) {
+            this.setState({serial: '', confirmed: false, inputClasses: '', labelClasses: ''});
+        }
+    }
+
     render() {
         const {serial, error, barcode, confirmed, inputClasses, labelClasses} = this.state;
         const {lang, showSerialHelp, serialGraphicPreview} = this.props;
@@ -60,6 +71,7 @@ class InputSerial extends React.Component {
                         value={serial}
                         onChange={this.handleSerial}
                         onBlur={() => this.barcodeLoader(serial)}
+                        readOnly={confirmed}
                     />
                     {!confirmed && <Barcode startLoader={this.barcodeLoader} serialGraphicPreview={serialGraphicPreview} />}
                     {barcode && <div className="barcode-loader">
@@ -76,8 +88,8 @@ class InputSerial extends React.Component {
                         {!error && <p className="si-txt4">{lang.serial_confirm_label}</p>}
                         <p className="btn_serial-help" onClick={showSerialHelp}>{lang.serial_where_to_find} &gt;</p>
                     </div>
-                    {!confirmed && <button>{lang.btn_serial_confirm}</button>}
-                    {confirmed && <button className="btn_confirm_serial" onClick={this.submitSerial}>{lang.btn_serial_confirm}</button>}
+                    {!confirmed && <button onClick={e => e.preventDefault()}>{lang.btn_confirm}</button>}
+                    {confirmed && <button className="btn_confirm_serial" onClick={this.submitSerial}>{lang.btn_confirm}</button>}
                 </div>
             </form>
         )

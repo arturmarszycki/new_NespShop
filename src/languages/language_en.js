@@ -9,7 +9,8 @@ export default {
     serial_help: 'The serial number is a line of 19 alphanumeric characters that is printed on a removable sticker found on the drip tray or on the back of your machine.',
     serial_confirm_label: 'Confirm your serial number',
     serial_where_to_find: 'Where can I find it?',
-    btn_serial_confirm: 'confirm',
+    btn_confirm: 'confirm',
+    btn_continue: 'continue',
     error_serial: 'Wrong serial number',
     serial_number_label: 'machine serial number',
     label_help_in_touch: 'Need help? ',
@@ -21,5 +22,13 @@ export default {
     modal_help_input_label: 'Or contact us by phone:',
     modal_serial_help_title: 'Find your machine serial number',
     serial_number_photo_label: 'Serial number photo',
-    photo_edit_label: 'Edit'
+    photo_edit_label: 'Edit',
+    proof_txt1: 'Please provide information about your purchase',
+    proof_my_machine: 'My machine',
+    proof_one_machine_requirement: 'You can only register one machine at a time.',
+    proof_txt2: 'Now upload proof of purchase of your machine',
+    proof_upload_image: 'Upload your image',
+    proof_compatible_files: 'Compatible file types: JPG, JPEG, PNG',
+    proof_maximum_size: 'Maximum file size: 8MB',
+    proof_define_type: 'What is the proof of the purchase?'
 }

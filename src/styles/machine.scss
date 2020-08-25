@@ -122,30 +122,8 @@
           }
         }
       }
-      .serial-number-photo {
-        margin: 20px 0 40px 0;
-        p {
-          font-size: 12px;
-          margin-bottom: 8px;
-        }
-        .graphic-serial {
-          width: 100%;
-          border-radius: 8px;
-        }
-        .edit-bar {
-          padding: 8px 0 0 16px;
-          display: flex;
-          align-items: flex-start;
-          span {
-            color: $color-brown;
-            font-size: 12px;
-            font-family: 'LucasMedium', sans-serif;
-          }
-          img {
-            margin-left: 12px;
-            width: 20px;
-          }
-        }
+      .uploaded-photo {
+        @include uploadedPhoto;
       }
       .serial-help {
         p {
