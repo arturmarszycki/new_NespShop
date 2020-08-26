@@ -1,4 +1,4 @@
-@import './variables', './mixins';
+@import '../variables';
 .proof-of-purchase {
   .proof-label {
     font-family: 'LucasSemiBold', sans-serif;
@@ -9,16 +9,69 @@
     font-size: 14px;
     margin-bottom: 10px;
   }
+  .machine-info {
+    display: flex;
+    margin-bottom: 20px;
+    .machine-graphic {
+      width: 40%;
+      text-align: center;
+      padding-right: 20px;
+      img {
+        max-width: 80%;
+        max-height: 200px;
+      }
+    }
+    .machine-actions {
+      padding-top: 10px;
+      .machine-name {
+        font-family: 'LucasSemiBold', sans-serif;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      span {
+        color: #777;
+        text-transform: uppercase;
+        font-size: 11px;
+      }
+      .machine-sn {
+        font-size: 14px;
+        font-family: 'LucasMedium', sans-serif;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #ddd;
+        letter-spacing: 1px;
+      }
+      .edit-bar {
+        padding: 10px 0 0 16px;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        span {
+          color: $color-brown;
+          font-size: 12px;
+          font-family: 'LucasMedium', sans-serif;
+          text-transform: capitalize;
+        }
+        img {
+          margin-left: 12px;
+          width: 20px;
+        }
+      }
+      small {
+        font-size: 10px;
+        width: 60%;
+        display: inline-block;
+        color: #777;
+      }
+    }
+  }
   .input-proof {
+    position: relative;
     form {
       .input-proof-label {
         font-family: 'LucasMedium', sans-serif;
         font-size: 14px;
         margin-bottom: 5px;
         max-width: 75%;
-      }
-      .preview-frame {
-        @include uploadedPhoto;
       }
       .file-input {
         .input-file-apparition {
@@ -45,12 +98,6 @@
             text-align: center;
           }
         }
-        input {
-          position: absolute;
-          left: 0;
-          top: 0;
-          z-index: -1;
-        }
         .help-infos {
           display: flex;
           flex-direction: column;
@@ -60,6 +107,12 @@
             color: #777;
           }
         }
+      }
+      input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
       }
       .btn_proof-help {
         font-size: 12px;
@@ -77,6 +130,10 @@
         padding: 0 20px;
         min-width: 160px;
         outline: none;
+      }
+      .btn_submit_proof {
+        background-color: $color-green;
+        color: #fff;
       }
     }
   }

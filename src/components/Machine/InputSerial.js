@@ -1,6 +1,7 @@
 import React from 'react';
 import Barcode from './extras/Barcode';
 import '../../styles/barcode.css';
+import '../../styles/Machine/InputSerial.scss';
 
 const serialNumbers = ['serialklubnespresso'];
 class InputSerial extends React.Component {
@@ -54,7 +55,7 @@ class InputSerial extends React.Component {
 
     render() {
         const {serial, error, barcode, confirmed, inputClasses, labelClasses} = this.state;
-        const {lang, showSerialHelp, serialGraphicPreview} = this.props;
+        const {lang, showSerialHelp, serialGraphicPreview, edition, reloadPhoto} = this.props;
         return (
             <form action="">
                 <div className="serial-input">
@@ -73,7 +74,7 @@ class InputSerial extends React.Component {
                         onBlur={() => this.barcodeLoader(serial)}
                         readOnly={confirmed}
                     />
-                    {!confirmed && <Barcode startLoader={this.barcodeLoader} serialGraphicPreview={serialGraphicPreview} />}
+                    <Barcode startLoader={this.barcodeLoader} serialGraphicPreview={serialGraphicPreview} confirmed={confirmed} reloadPhoto={reloadPhoto} />
                     {barcode && <div className="barcode-loader">
                         <div className="meter animate">
                             <span style={{width: '100%'}}><span>{}</span></span>
@@ -86,7 +87,7 @@ class InputSerial extends React.Component {
                             {error && <span className="error-msg">{lang.error_serial}</span>}
                         </div>
                         {!error && <p className="si-txt4">{lang.serial_confirm_label}</p>}
-                        <p className="btn_serial-help" onClick={showSerialHelp}>{lang.serial_where_to_find} &gt;</p>
+                        {!edition && <p className="btn_serial-help" onClick={showSerialHelp}>{lang.serial_where_to_find} &gt;</p>}
                     </div>
                     {!confirmed && <button onClick={e => e.preventDefault()}>{lang.btn_confirm}</button>}
                     {confirmed && <button className="btn_confirm_serial" onClick={this.submitSerial}>{lang.btn_confirm}</button>}

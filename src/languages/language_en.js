@@ -30,5 +30,12 @@ export default {
     proof_upload_image: 'Upload your image',
     proof_compatible_files: 'Compatible file types: JPG, JPEG, PNG',
     proof_maximum_size: 'Maximum file size: 8MB',
-    proof_define_type: 'What is the proof of the purchase?'
+    proof_define_type: 'What is the proof of the purchase?',
+    proof_type_1: 'Your proof of purchase is the cash receipt of the store. You can upload a picture of:',
+    proof_type_2: 'A paper receipt',
+    proof_type_3: 'An email order confirmation',
+    proof_type_4: 'Any document that shows the date of purchase, the name of the store and the price paid.',
+    serial_edition_photo_label: 'Serial number photo',
+    purchase_details_main_label: 'Please, complete purchase details:',
+    label_purchasing_date: 'purchasing date'
 }

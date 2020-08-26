@@ -5,7 +5,8 @@ class InputProof extends Component {
     state = {
         image: null,
         image_preview_URL: null,
-        graphicActions: true
+        graphicActions: true,
+        confirmed: false
     }
     fileHandler = e => {
         this.setState({image: e.target.files[0]});
@@ -14,7 +15,7 @@ class InputProof extends Component {
     fileReader = file => {
         let reader = new FileReader();
         reader.onloadend = () => {
-            this.setState({image_preview_URL: reader.result});
+            this.setState({image_preview_URL: reader.result, graphicActions: true});
         }
         reader.readAsDataURL(file);
     }
@@ -22,6 +23,7 @@ class InputProof extends Component {
         e.preventDefault();
         const {image} = this.state;
         if (image) {
+            this.setState({confirmed: true});
             this.props.submitPurchaseProof(image);
         }
     }
@@ -30,7 +32,7 @@ class InputProof extends Component {
     }
     render() {
         const {lang, showProofTypes} = this.props;
-        const {image, image_preview_URL, graphicActions} = this.state;
+        const {image, image_preview_URL, graphicActions, confirmed} = this.state;
         const img = require('../../../images/icon_camera.png');
         return (
             <form action="">
@@ -41,6 +43,8 @@ class InputProof extends Component {
                         graphicDelete={this.graphicDelete}
                         graphicActions={graphicActions}
                         lang={lang}
+                        reloadPhoto={() => this.inputElement.click()}
+                        allowDelete={confirmed}
                     />}
                 </div>
                 {!image && <div className="file-input">
@@ -48,22 +52,26 @@ class InputProof extends Component {
                         <img src={img.default} alt="" className="icon-camera"/>
                         <span>{lang.proof_upload_image}</span>
                     </div>
-                    <input
-                        type="file"
-                        name="purchase_proof"
-                        id="purchase_proof"
-                        onChange={this.fileHandler}
-                        accept="image/png, image/jpeg"
-                        style={{visibility: 'hidden'}}
-                        ref={input => this.inputElement = input}
-                    />
                     <div className="help-infos">
                         <small>{lang.proof_compatible_files}</small>
                         <small>{lang.proof_maximum_size}</small>
                     </div>
                 </div>}
+                <input
+                    type="file"
+                    name="purchase_proof"
+                    id="purchase_proof"
+                    onChange={this.fileHandler}
+                    accept="image/png, image/jpeg"
+                    style={{visibility: 'hidden'}}
+                    ref={input => this.inputElement = input}
+                />
                 <p className="btn_proof-help" onClick={showProofTypes}>{lang.proof_define_type} &gt;</p>
-                <button onClick={this.submitProof}>{lang.btn_continue}</button>
+                {!confirmed && <div>
+                    {!image && <button onClick={e => e.preventDefault()}>{lang.btn_continue}</button>}
+                    {image &&
+                    <button className="btn_submit_proof" onClick={this.submitProof}>{lang.btn_continue}</button>}
+                </div>}
             </form>
         );
     }

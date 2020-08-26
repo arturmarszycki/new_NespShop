@@ -1,0 +1,30 @@
+@import '../variables';
+.section-machine {
+  .machine-form {
+    .serial-number {
+      .serial-info-txt {
+        margin-bottom: 8px;
+      }
+      .si-txt1 {
+        font-family: 'LucasSemiBold', sans-serif;
+      }
+      .si-txt2 {
+        font-family: 'LucasMedium', sans-serif;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+      .si-txt3 {
+        font-size: 12px;
+      }
+      .serial-help {
+        p {
+          font-size: 11px;
+          padding: 12px 0;
+        }
+        img {
+          width: 200px;
+        }
+      }
+    }
+  }
+}

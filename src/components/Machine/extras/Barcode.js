@@ -6,7 +6,9 @@ class Barcode extends React.Component {
         image_preview_URL: null
     }
     fileHandler = e => {
-        this.setState({image: e.target.files[0]}, () => this.props.startLoader('serialklubnespresso', 'graphic'));
+        this.setState({image: e.target.files[0]}, () => {
+            this.props.startLoader('serialklubnespresso', 'graphic');
+        });
         this.fileReader(e.target.files[0]);
     }
     fileReader = file => {
@@ -16,10 +18,16 @@ class Barcode extends React.Component {
         }
         reader.readAsDataURL(file);
     }
+    componentDidUpdate(prevProps) {
+        if (this.props.reloadPhoto !== prevProps.reloadPhoto && this.props.reloadPhoto) {
+            this.inputElement.click();
+        }
+    }
     render() {
+        const {confirmed} = this.props
         const img = require('../../../images/icon_camera.png');
         return (
-            <div className="barcode">
+            <div className="barcode" style={confirmed ? {visibility: 'hidden'}: {}}>
                 <img src={img.default} alt="" onClick={() => this.inputElement.click()} />
                 <input type="file" name="barcode" id="barcode" onChange={this.fileHandler} style={{visibility: 'hidden'}} accept="image/jpeg,image/png,application/pdf;capture=camera" ref={input => this.inputElement = input} />
             </div>

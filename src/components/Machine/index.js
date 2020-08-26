@@ -1,7 +1,7 @@
 import React from 'react';
 import AnimateHeight from 'react-animate-height';
 import MachineForm from "./MachineForm";
-import '../../styles/machine.scss';
+import '../../styles/Machine/machine.scss';
 
 class Machine extends React.Component {
     state = {
