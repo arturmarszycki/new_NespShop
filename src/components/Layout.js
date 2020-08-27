@@ -16,7 +16,7 @@ const sections = [
 ];
 class Layout extends React.Component {
     state = {
-        active: 1,
+        active: 2,
         modal_help: false
     }
     activateSection = id => {

@@ -44,5 +44,6 @@ export default {
     label_total_value: 'coffee machine price with vat',
     error_date_couldnt_read: "We're sorry but we couldnt read the invoice/receipt date. Please type it manually.",
     error_number_couldnt_read: "We're sorry but we couldnt read the invoice/receipt number. Please type it manually.",
-    error_value_couldnt_read: "We're sorry but we couldnt read the invoice/receipt total value. Please type it manually."
+    error_value_couldnt_read: "We're sorry but we couldnt read the invoice/receipt total value. Please type it manually.",
+    shop_main_label: 'Select your coffees to complete the redemption of your offer:'
 }

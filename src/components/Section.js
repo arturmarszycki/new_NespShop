@@ -1,6 +1,6 @@
 import React from 'react';
 import Machine from '../flow/Machine';
-import Shop from './Shop';
+import Shop from '../flow/Shop';
 import Customer from './Customer';
 import Summary from './Summary';
 
