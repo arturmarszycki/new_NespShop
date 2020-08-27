@@ -8,13 +8,13 @@ class InputDate extends Component {
     }
     handleDate = date => {
         this.setState({purchasing_date: date});
-        this.props.validatePurchasingDate(date);
+        this.props.validatePurchasingDate(date.toLocaleDateString());
     }
     render() {
         const {purchasing_date} = this.state
-        const {lang} = this.props;
+        const {lang, error_msg} = this.props;
         return (
-            <div className="purchasing-date">
+            <div className="form-input purchasing-date">
                 <label htmlFor="purchasing_date">{lang.label_purchasing_date}</label>
                 <DatePicker
                     selected={purchasing_date}
@@ -23,8 +23,9 @@ class InputDate extends Component {
                     maxDate={new Date()}
                     id="purchasing_date"
                     name="purchasing_date"
+                    className={error_msg ? 'input-error' : ''}
                 />
-                {this.props.error_msg && <p><small className="form-warn">{this.props.error_msg}</small></p>}
+                {error_msg && <p><small className="form-warn">{error_msg}</small></p>}
             </div>
         );
     }

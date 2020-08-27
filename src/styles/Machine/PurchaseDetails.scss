@@ -1,12 +1,12 @@
-@import '../variables';
+@import '../mixins', '../variables';
 .purchase-details {
   padding: 20px 0;
   .pd-title {
     font-family: 'LucasMedium', sans-serif;
     font-size: 14px;
   }
-  .purchasing-date {
-    margin: 10px 0;
+  .form-input {
+    margin: 20px 0;
     position: relative;
     label {
       position: absolute;
@@ -23,6 +23,26 @@
     .label-correct {
       color: $color-green;
     }
+    input {
+      width: 100%;
+      height: 48px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      padding: 20px 16px 6px 16px;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+    p {
+      min-height: 15px;
+      padding: 10px 5px 0 20px;
+      .form-warn {
+        @include error_msg;
+      }
+    }
+  }
+  .purchasing-date {
+    margin: 10px 0 20px 0;
     .react-datepicker-wrapper {
       width: 100%;
       input {
@@ -39,14 +59,60 @@
           font-size: 14px;
         }
       }
+      .input-error {
+        border: 1px solid #ff0000;
+        color: #ff0000;
+      }
+      .input-correct {
+        border: 1px solid $color-green;
+        color: $color-green;
+      }
     }
-    .input-error {
-      border: 1px solid #ff0000;
-      color: #ff0000;
+    .react-datepicker-popper {
+      z-index: 2;
     }
-    .input-correct {
-      border: 1px solid $color-green;
-      color: $color-green;
+  }
+  .select-input {
+    select {
+      width: 100%;
+      height: 48px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      padding: 20px 16px 6px 16px;
+      font-size: 16px;
+      letter-spacing: 1px;
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: #fff;
+    }
+    .select-arrow {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid #000;
+    }
+  }
+  .form-submit-part {
+    button {
+      border: none;
+      border-radius: 20px;
+      background-color: #ddd;
+      height: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 0 20px;
+      min-width: 160px;
+      outline: none;
+    }
+    .btn_submit_total {
+      background-color: $color-green;
+      color: #fff;
     }
   }
 }

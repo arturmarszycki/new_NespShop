@@ -15,11 +15,11 @@ class Machine extends React.Component {
     }
     render() {
         const {height} = this.state;
-        const {lang, machineData, addMachineInfo} = this.props;
+        const {lang, machineData, addMachineInfo, activateSection} = this.props;
         return (
             <AnimateHeight duration={500} height={height}>
                 <div className="section-machine">
-                    <MachineForm lang={lang} data={machineData} addMachineInfo={addMachineInfo} />
+                    <MachineForm lang={lang} data={machineData} addMachineInfo={addMachineInfo} activateSection={activateSection} />
                 </div>
             </AnimateHeight>
         )

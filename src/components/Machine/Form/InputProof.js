@@ -69,8 +69,7 @@ class InputProof extends Component {
                 <p className="btn_proof-help" onClick={showProofTypes}>{lang.proof_define_type} &gt;</p>
                 {!confirmed && <div>
                     {!image && <button onClick={e => e.preventDefault()}>{lang.btn_continue}</button>}
-                    {image &&
-                    <button className="btn_submit_proof" onClick={this.submitProof}>{lang.btn_continue}</button>}
+                    {image && <button className="btn_submit_proof" onClick={this.submitProof}>{lang.btn_continue}</button>}
                 </div>}
             </form>
         );

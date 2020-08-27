@@ -38,13 +38,13 @@ class InputSerial extends React.Component {
             this.setState({error: true, confirmed: false, inputClasses: 'input-error', labelClasses: 'label-error'});
         }
     }
-    submitSerial = async e => {
+    submitSerial = e => {
         e.preventDefault();
         const {serial, confirmed} = this.state;
         if (confirmed) {
-            this.props.submitSerialNumber(this.state.serial, 'serial_number');
+            this.props.submitSerialNumber(this.state.serial);
         } else {
-            await this.barcodeLoader(serial);
+            this.barcodeLoader(serial);
         }
     }
     componentDidUpdate(prevProps) {

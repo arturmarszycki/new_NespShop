@@ -37,5 +37,12 @@ export default {
     proof_type_4: 'Any document that shows the date of purchase, the name of the store and the price paid.',
     serial_edition_photo_label: 'Serial number photo',
     purchase_details_main_label: 'Please, complete purchase details:',
-    label_purchasing_date: 'purchasing date'
+    label_purchasing_date: 'purchasing date',
+    label_select_trade_partner: 'trade partner',
+    label_select_retailer_store: 'retailer store',
+    label_invoice_number: 'invoice number',
+    label_total_value: 'coffee machine price with vat',
+    error_date_couldnt_read: "We're sorry but we couldnt read the invoice/receipt date. Please type it manually.",
+    error_number_couldnt_read: "We're sorry but we couldnt read the invoice/receipt number. Please type it manually.",
+    error_value_couldnt_read: "We're sorry but we couldnt read the invoice/receipt total value. Please type it manually."
 }

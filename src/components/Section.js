@@ -4,11 +4,12 @@ import Shop from './Shop';
 import Customer from './Customer';
 import Summary from './Summary';
 
-const Section = ({content, active, activateSection, lang}) => {
-    const renderSection = id => {
+class Section extends React.Component {
+    renderSection = id => {
+        const {lang, activateSection} = this.props;
         switch(id) {
             case 1:
-                return <Machine lang={lang} />;
+                return <Machine lang={lang} activateSection={activateSection} />;
             case 2:
                 return <Shop lang={lang} />;
             case 3:
@@ -19,16 +20,19 @@ const Section = ({content, active, activateSection, lang}) => {
                 return null;
         }
     }
-    const activeSection = renderSection(active);
-    return (
-        <div className={active === content.id ? 'section active' : 'section'} onClick={activateSection}>
-            <div className="section-number-outer">
-                <span className="section-number">{content.id}</span>
+    render() {
+        const {content, active} = this.props;
+        const activeSection = this.renderSection(active);
+        return (
+            <div className={active === content.id ? 'section active' : 'section'}>
+                <div className="section-number-outer">
+                    <span className="section-number">{content.id}</span>
+                </div>
+                <h2>{content.title}</h2>
+                {active === content.id && activeSection}
             </div>
-            <h2>{content.title}</h2>
-            {active === content.id && activeSection}
-        </div>
-    )
+        )
+    }
 }
 
 export default Section;

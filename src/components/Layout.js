@@ -35,7 +35,7 @@ class Layout extends React.Component {
                 <Header amount={0} />
                 <div className="content">
                     <div className="main-line">{}</div>
-                    {sections.map(el => <Section key={el.id} content={el} active={active} activateSection={() => this.activateSection(el.id)} lang={lang} />)}
+                    {sections.map(el => <Section key={el.id} content={el} active={active} activateSection={this.activateSection} lang={lang} />)}
                 </div>
                 <HelpAction lang={lang} showHelpModal={this.showHelpModal} />
                 {modal_help && <ModalFrame hideModal={this.hideHelpModal}><GetInTouch lang={lang} /></ModalFrame>}
