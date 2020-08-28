@@ -16,7 +16,7 @@ const sections = [
 ];
 class Layout extends React.Component {
     state = {
-        active: 2,
+        active: 1,
         modal_help: false
     }
     activateSection = id => {
@@ -30,12 +30,21 @@ class Layout extends React.Component {
     }
     render() {
         const {active, modal_help} = this.state;
+        const {cart, updateCart} = this.props;
         return (
             <div className="container">
-                <Header amount={0} />
+                <Header amount={cart.length} cart={cart} />
                 <div className="content">
                     <div className="main-line">{}</div>
-                    {sections.map(el => <Section key={el.id} content={el} active={active} activateSection={this.activateSection} lang={lang} passed={active > el.id} />)}
+                    {sections.map(el => <Section
+                        key={el.id}
+                        content={el}
+                        active={active}
+                        activateSection={this.activateSection}
+                        lang={lang}
+                        passed={active > el.id}
+                        updateCart={updateCart}
+                    />)}
                 </div>
                 <HelpAction lang={lang} showHelpModal={this.showHelpModal} />
                 {modal_help && <ModalFrame hideModal={this.hideHelpModal}><GetInTouch lang={lang} /></ModalFrame>}

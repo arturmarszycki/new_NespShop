@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({amount}) => {
+const Header = ({amount, cart}) => {
     const logo = require('../../images/logo.png');
     const bag = require('../../images/icon_bag.png');
     return (

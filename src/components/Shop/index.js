@@ -33,7 +33,7 @@ class Shop extends React.Component {
     }
     render() {
         const {height, isFixed} = this.state;
-        const {shop, lang} = this.props;
+        const {shop, lang, updateCart} = this.props;
         if (shop.length) {
             const icon_filters = require('../../images/icon_filters.png');
             const category_9 = shop.filter(el => el.id_shop_category === 9);
@@ -55,7 +55,7 @@ class Shop extends React.Component {
                         </div>
                         {isFixed && <div className="block-frame-plug">{}</div>}
                         <div className="products">
-                            {categories.map(list => <Category key={list[0].id_shop_category} list={list} lang={lang} />)}
+                            {categories.map(list => <Category key={list[0].id_shop_category} list={list} lang={lang} updateCart={updateCart} />)}
                         </div>
                     </div>
                 </AnimateHeight>
