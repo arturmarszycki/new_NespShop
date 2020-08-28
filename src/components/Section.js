@@ -21,12 +21,13 @@ class Section extends React.Component {
         }
     }
     render() {
-        const {content, active} = this.props;
+        const {content, active, passed} = this.props;
         const activeSection = this.renderSection(active);
+        const graphic_checked = require('../images/icon_checked.png');
         return (
-            <div className={active === content.id ? 'section active' : 'section'}>
+            <div className={active === content.id || passed ? 'section active' : 'section'}>
                 <div className="section-number-outer">
-                    <span className="section-number">{content.id}</span>
+                    <span className="section-number">{passed ? <img src={graphic_checked.default} alt="" /> : content.id}</span>
                 </div>
                 <h2>{content.title}</h2>
                 {active === content.id && activeSection}

@@ -45,5 +45,9 @@ export default {
     error_date_couldnt_read: "We're sorry but we couldnt read the invoice/receipt date. Please type it manually.",
     error_number_couldnt_read: "We're sorry but we couldnt read the invoice/receipt number. Please type it manually.",
     error_value_couldnt_read: "We're sorry but we couldnt read the invoice/receipt total value. Please type it manually.",
-    shop_main_label: 'Select your coffees to complete the redemption of your offer:'
+    shop_main_label: 'Select your coffees to complete the redemption of your offer:',
+    label_coffee_packs: 'coffee packs',
+    label_intensity: 'intensity',
+    btn_buy_now: 'buy now',
+    btn_read_more: 'Read more'
 }

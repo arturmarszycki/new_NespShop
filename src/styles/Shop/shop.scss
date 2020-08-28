@@ -1,3 +1,4 @@
+@import '../variables', '../mixins';
 .section-shop {
   .shop-main-label {
     letter-spacing: 1px;
@@ -28,15 +29,18 @@
   }
   .category-block-frame {
     width: calc(100% + 70px);
+    height: 140px;
     transform: translate(-50px);
-    padding: 20px 0 20px 30px;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
     position: relative;
-    z-index: 11;
     .category-block {
       list-style: none;
       li {
         display: inline-block;
-        width: 20%;
+        width: 19%;
+        max-width: 80px;
         text-align: center;
         img {
           width: 80%;
@@ -46,6 +50,97 @@
           font-family: 'LucasMedium', sans-serif;
           font-size: 12px;
           padding: 0 10px;
+        }
+      }
+    }
+  }
+  .el-fixed {
+    width: 100%;
+    transform: translate(0);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 60px;
+    z-index: 11;
+    background-color: #faf9f8;
+    box-shadow: 5px 0 15px #999;
+  }
+  .block-frame-plug {
+    height: 140px;
+  }
+  .products {
+    .single-category {
+      .category-label {
+        padding: 10px 0;
+        font-family: 'LucasMedium', sans-serif;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+      }
+      .capsule-list {
+        list-style: none;
+        width: 100%;
+        max-width: 410px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .single-capsule {
+          background-color: #fff;
+          max-width: 200px;
+          width: 48%;
+          text-align: center;
+          margin-bottom: 4%;
+          padding: 20px 5px;
+          .capsule-graphic {
+            width: 40%;
+          }
+          .capsule-title {
+            font-family: 'LucasMedium', sans-serif;
+            font-size: 15px;
+            padding: 5px 0;
+            min-height: 50px;
+          }
+          .capsule-header {
+            font-size: 12px;
+            font-family: 'LucasLight', sans-serif;
+          }
+          .product-price {
+            color: $color-green;
+            font-family: 'LucasMedium', sans-serif;
+            margin: 5px 0;
+            font-size: 14px;
+          }
+          .btn_capsule_details {
+            color: $color-brown;
+            padding: 5px 0;
+            font-family: 'LucasMedium', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+          }
+          .intensity-info {
+            margin-bottom: 10px;
+            .intensity-graphic {
+              height: 12px;
+              .int-square {
+                display: inline-block;
+                width: 2px;
+                height: 8px;
+                margin-right: 2px;
+                background-color: #ddd;
+              }
+              .active-square {
+                background-color: $color-brown;
+              }
+            }
+            .intensity-text {
+              color: $color-brown;
+              font-size: 11px;
+            }
+          }
+          .buy-product {
+            .btn_buy_now {
+              @include btn_green;
+            }
+          }
         }
       }
     }
