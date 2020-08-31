@@ -1,17 +1,17 @@
 import React from 'react';
 import Machine from '../flow/Machine';
-import Shop from '../flow/Shop';
+import Shop from './Shop';
 import Customer from './Customer';
 import Summary from './Summary';
 
 class Section extends React.Component {
     renderSection = id => {
-        const {lang, activateSection, updateCart} = this.props;
+        const {lang, activateSection, updateCart, shop, getData, showDetails} = this.props;
         switch(id) {
             case 1:
                 return <Machine lang={lang} activateSection={activateSection} />;
             case 2:
-                return <Shop lang={lang} updateCart={updateCart} />;
+                return <Shop lang={lang} updateCart={updateCart} shop={shop} getData={getData} showDetails={showDetails} />;
             case 3:
                 return <Customer lang={lang} />;
             case 4:

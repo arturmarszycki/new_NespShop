@@ -1,0 +1,88 @@
+@import '../variables', '../mixins';
+.cart {
+  h3 {
+    font-family: 'LucasSemiBold', sans-serif;
+  }
+  .elements-header {
+    padding: 30px 0 10px 0;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    min-height: 60px;
+    p {
+      text-transform: uppercase;
+      font-family: 'LucasLight', sans-serif;
+    }
+    span {
+      font-size: 11px;
+      margin-top: 10px;
+      display: inline-block;
+      font-family: 'LucasMedium', sans-serif;
+    }
+  }
+  .elements-list {
+    list-style: none;
+    li {
+      padding: 20px 0 10px 0;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .graphic-part {
+        width: 25%;
+        img {
+          width: 50%;
+        }
+      }
+      .main-part {
+        width: 75%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        .main-part-inner {
+          width: 75%;
+          .main-part-info {
+            margin-bottom: 5px;
+            .element-name {
+              font-size: 12px;
+              letter-spacing: 1px;
+              font-family: 'LucasSemiBold', sans-serif;
+            }
+            small {
+              font-size: 10px;
+            }
+          }
+          .main-part-action {
+            display: flex;
+            justify-content: flex-end;
+            @include qtyAction;
+          }
+        }
+        .price-part {
+          width: 20%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          padding-bottom: 5px;
+          .btn_remove_from_cart {
+            width: 12px;
+          }
+          .element-price {
+            color: $color-green;
+            font-size: 14px;
+            font-family: 'LucasSemiBold', sans-serif;
+          }
+        }
+      }
+    }
+  }
+  .cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    span {
+      letter-spacing: 1px;
+      font-size: 18px;
+    }
+  }
+}

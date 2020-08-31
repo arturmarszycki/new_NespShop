@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import Layout from '../flow/Cart';
+import Layout from '../flow/Shop';
 import store from '../redux/store';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 

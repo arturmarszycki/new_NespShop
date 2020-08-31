@@ -140,19 +140,7 @@
             .btn_buy_now {
               @include btn_green;
             }
-            .quantity-action {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              img {
-                width: 30px;
-                height: 30px;
-              }
-              span {
-                display: inline-block;
-                width: 40px;
-              }
-            }
+            @include qtyAction;
           }
         }
       }

@@ -23,17 +23,19 @@ class Shop extends React.Component {
             this.setState({isFixed: false});
         }
     }
-    componentDidMount() {
+    async componentDidMount() {
         this.toggle();
-        this.props.getData();
-        document.addEventListener('scroll', this.trackScrolling);
+        await this.props.getData();
+        setTimeout(() => {
+            document.addEventListener('scroll', this.trackScrolling);
+        }, 500);
     }
     componentWillUnmount() {
         document.removeEventListener('scroll', this.trackScrolling);
     }
     render() {
         const {height, isFixed} = this.state;
-        const {shop, lang, updateCart} = this.props;
+        const {shop, lang, updateCart, showDetails} = this.props;
         if (shop.length) {
             const icon_filters = require('../../images/icon_filters.png');
             const category_9 = shop.filter(el => el.id_shop_category === 9);
@@ -55,7 +57,7 @@ class Shop extends React.Component {
                         </div>
                         {isFixed && <div className="block-frame-plug">{}</div>}
                         <div className="products">
-                            {categories.map(list => <Category key={list[0].id_shop_category} list={list} lang={lang} updateCart={updateCart} />)}
+                            {categories.map(list => <Category key={list[0].id_shop_category} list={list} lang={lang} updateCart={updateCart} shop={shop} showDetails={showDetails} />)}
                         </div>
                     </div>
                 </AnimateHeight>

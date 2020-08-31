@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({amount, cart}) => {
+const Header = ({amount, showBasket}) => {
     const logo = require('../../images/logo.png');
     const bag = require('../../images/icon_bag.png');
     return (
@@ -9,7 +9,7 @@ const Header = ({amount, cart}) => {
                 <span>{}</span><span>{}</span><span>{}</span>
             </div>
             <img src={logo.default} alt="" className="logo" />
-            <div className="basket-info">
+            <div className="basket-info" onClick={showBasket}>
                 <img src={bag.default} alt="" />
                 <span className="amount">{amount}</span>
             </div>

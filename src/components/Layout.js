@@ -5,6 +5,8 @@ import Section from './Section';
 import GetInTouch from './common/GetInTouch';
 import ModalFrame from './common/ModalFrame';
 import HelpAction from './common/HelpAction';
+import Details from './Shop/Details';
+import Cart from './common/Cart';
 import '../styles/common.scss';
 import lang from '../languages/language_en';
 
@@ -16,8 +18,10 @@ const sections = [
 ];
 class Layout extends React.Component {
     state = {
-        active: 1,
-        modal_help: false
+        active: 2,
+        modal_help: false,
+        basket: false,
+        details: null
     }
     activateSection = id => {
         this.setState({active: id});
@@ -28,12 +32,25 @@ class Layout extends React.Component {
     hideHelpModal = () => {
         this.setState({modal_help: false});
     }
+    showBasket = () => {
+        this.setState({basket: true});
+    }
+    hideBasket = () => {
+        this.setState({basket: false});
+    }
+    showDetails = item => {
+        this.setState({details: item});
+    }
+    hideDetails = () => {
+        this.setState({details: null});
+    }
     render() {
-        const {active, modal_help} = this.state;
-        const {cart, updateCart} = this.props;
+        const {active, modal_help, basket, details} = this.state;
+        const {shop, getData, updateShop} = this.props;
+        const cart = shop.filter(el => el.qty !== 0);
         return (
             <div className="container">
-                <Header amount={cart.length} cart={cart} />
+                <Header amount={cart.length} cart={cart} showBasket={this.showBasket} />
                 <div className="content">
                     <div className="main-line">{}</div>
                     {sections.map(el => <Section
@@ -43,11 +60,16 @@ class Layout extends React.Component {
                         activateSection={this.activateSection}
                         lang={lang}
                         passed={active > el.id}
-                        updateCart={updateCart}
+                        updateCart={updateShop}
+                        shop={shop}
+                        getData={getData}
+                        showDetails={this.showDetails}
                     />)}
                 </div>
                 <HelpAction lang={lang} showHelpModal={this.showHelpModal} />
                 {modal_help && <ModalFrame hideModal={this.hideHelpModal}><GetInTouch lang={lang} /></ModalFrame>}
+                {basket && <ModalFrame hideModal={this.hideBasket}><Cart lang={lang} cart={cart} updateCart={updateShop} /></ModalFrame>}
+                {details && <ModalFrame hideModal={this.hideDetails}><Details lang={lang} item={details} /></ModalFrame>}
                 <Footer />
             </div>
         )

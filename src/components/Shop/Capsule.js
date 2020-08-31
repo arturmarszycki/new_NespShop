@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Capsule extends Component {
     state = {
-        bought: 0,
+        bought: this.props.item.qty,
         product: this.props.item
     }
     showIntensityGraphic = int => {
@@ -23,12 +23,16 @@ class Capsule extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.state.bought !== prevState.bought) {
             const {bought} = this.state;
-            this.setState(prevState => ({product: {...prevState.product, qty: bought}}), () => this.props.updateCart(this.state.product));
+            this.setState(prevState => ({product: {...prevState.product, qty: bought}}), () => {
+                this.props.updateCart(this.state.product);
+            });
+        }
+        if (this.props.item !== prevProps.item) {
+            this.setState({bought: this.props.item.qty, product: this.props.item});
         }
     }
     render() {
-        const {item, lang} = this.props;
-        const {bought} = this.state;
+        const {item, lang, showDetails} = this.props;
         const image = item.product_type === 'capsule' ? require(`../../images/${item.title}.png`) : require(`../../images/packet_${item.capsule_count}.png`);
         const add_10 = require('../../images/icon_add.png');
         const remove_10 = require('../../images/icon_remove.png');
@@ -38,7 +42,7 @@ class Capsule extends Component {
                 <h3 className="capsule-title">{item.title}</h3>
                 <p className="capsule-header">Powerful and&nbsp;contrasting&nbsp;coffee</p>
                 <p className="product-price">&euro;0.42</p>
-                <div className="btn_capsule_details">
+                <div className="btn_capsule_details" onClick={() => showDetails(item)}>
                     {lang.btn_read_more}&nbsp;&gt;
                 </div>
                 <div className="intensity-info">
@@ -46,10 +50,10 @@ class Capsule extends Component {
                     <span className="intensity-text">{lang.label_intensity}&nbsp;{item.intensity}</span>
                 </div>
                 <div className="buy-product">
-                    {!bought && <button className="btn_buy_now" onClick={this.addTenPieces}>{lang.btn_buy_now}</button>}
-                    {bought > 0 && <div className="quantity-action">
+                    {!item.qty && <button className="btn_buy_now" onClick={this.addTenPieces}>{lang.btn_buy_now}</button>}
+                    {item.qty > 0 && <div className="quantity-action">
                         <img src={remove_10.default} alt="" onClick={this.removeTenPieces} />
-                        <span>{bought}</span>
+                        <span>{item.qty}</span>
                         <img src={add_10.default} alt="" onClick={this.addTenPieces} />
                     </div>}
                 </div>

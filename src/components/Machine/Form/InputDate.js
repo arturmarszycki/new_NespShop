@@ -24,6 +24,7 @@ class InputDate extends Component {
                     id="purchasing_date"
                     name="purchasing_date"
                     className={error_msg ? 'input-error' : ''}
+                    onFocus={e => e.target.blur()}
                 />
                 {error_msg && <p><small className="form-warn">{error_msg}</small></p>}
             </div>

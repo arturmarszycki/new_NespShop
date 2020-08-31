@@ -49,5 +49,13 @@ export default {
     label_coffee_packs: 'coffee packs',
     label_intensity: 'intensity',
     btn_buy_now: 'buy now',
-    btn_read_more: 'Read more'
+    btn_read_more: 'Read more',
+    label_basket: 'Basket',
+    label_original: 'original',
+    label_capsule_sleeve_single: 'sleeve',
+    label_capsule_sleeve_plural: 'sleeves',
+    label_capsules_total: 'capsules total',
+    label_subtotal: 'Subtotal',
+    label_packs: 'packs',
+    label_your_benefits: 'your benefits'
 }
