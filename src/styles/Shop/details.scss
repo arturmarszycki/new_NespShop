@@ -1,0 +1,185 @@
+@import '../variables', '../mixins';
+.item-details {
+  .item-graphic {
+    width: 60px;
+    margin-bottom: 15px;
+  }
+  .set-graphic {
+    width: 100px;
+  }
+  .item-title {
+    font-family: 'LucasSemiBold', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 0 auto 10px auto;
+    max-width: 60%;
+  }
+  .item-subtitle {
+    font-family: 'LucasLight', sans-serif;
+    margin: 0 auto 15px auto;
+    max-width: 75%;
+  }
+  .item-price {
+    color: $color-green;
+    font-family: 'LucasMedium', sans-serif;
+    margin-bottom: 15px;
+  }
+  .buy-product {
+    margin-bottom: 20px;
+    .btn_buy_now {
+      @include btn_green;
+    }
+    @include qtyAction;
+  }
+  @include intensity;
+  .intensity-info {
+    margin-bottom: 20px;
+    .intensity-graphic {
+      height: 16px;
+      .int-square {
+        width: 3px;
+        height: 12px;
+        margin-right: 3px;
+      }
+    }
+    .intensity-text {
+      font-family: 'LucasLight', sans-serif;
+      color: $color-brown;
+      font-size: 14px;
+    }
+  }
+  .item-description {
+    text-align: justify;
+    text-align-last: center;
+    font-family: 'LucasLight', sans-serif;
+    margin: 0 auto 15px auto;
+  }
+  .set-description {
+    width: 90%;
+    text-align: center;
+  }
+  .item-cup-sizes {
+    margin-bottom: 25px;
+    h4 {
+      font-family: 'LucasMedium', sans-serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .cup-sizes {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      .cup-size {
+        margin: 0 5px;
+        img {
+          max-height: 25px;
+        }
+        p {
+          color: $color-brown;
+          font-family: 'LucasLight', sans-serif;
+          font-size: 14px;
+        }
+        &:last-of-type {
+          img {
+            max-height: 32px;
+          }
+        }
+      }
+    }
+  }
+  .comparable-profiles {
+    margin-bottom: 20px;
+    h4 {
+      font-family: 'LucasMedium', sans-serif;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      width: 75%;
+      margin: 0 auto;
+      .similar-capsule {
+        width: 50%;
+        .similar-capsule-inner {
+          width: 100%;
+          img {
+            width: 45%;
+            margin-bottom: 10px;
+          }
+          p {
+            font-size: 12px;
+            min-height: 50px;
+          }
+        }
+      }
+    }
+  }
+  .ingredients-allergens-label {
+    margin-bottom: 10px;
+    position: relative;
+    h4 {
+      font-family: 'LucasMedium', sans-serif;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .ia-arrow {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      transition: all .5s;
+    }
+    .ia-arrow-active {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+  .ingredients-allergens {
+    margin: 0 auto 40px auto;
+    width: 80%;
+    .ia-part {
+      margin-bottom: 20px;
+      h4 {
+        text-transform: uppercase;
+        font-family: 'LucasLight', sans-serif;
+      }
+      p {
+        font-size: 14px;
+        font-family: 'LucasLight', sans-serif;
+      }
+    }
+  }
+  .set-selection {
+    padding-top: 10px;
+    h4 {
+      font-family: 'LucasMedium', sans-serif;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .selection-list {
+      margin: 10px 0 40px 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      .packet-element {
+        width: 33.33%;
+        padding: 10px;
+        img {
+          width: 50%;
+          margin-bottom: 5px;
+        }
+        p {
+          text-transform: uppercase;
+          font-family: 'LucasLight', sans-serif;
+          font-size: 12px;
+        }
+        span {
+          font-family: 'LucasLight', sans-serif;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

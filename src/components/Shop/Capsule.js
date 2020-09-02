@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 class Capsule extends Component {
     state = {
         bought: this.props.item.qty,
-        product: this.props.item
+        product: this.props.item,
+        productType: 'capsule'
     }
     showIntensityGraphic = int => {
         let array = [], intensity = int;
@@ -14,11 +15,28 @@ class Capsule extends Component {
         }
         return array;
     }
-    addTenPieces = () => {
-        this.setState(prevState => ({bought: prevState.bought + 10}));
+    addPieces = () => {
+        const amount = this.state.productType === 'capsule' ? 10 : 1;
+        this.setState(prevState => ({bought: prevState.bought + amount}));
     }
-    removeTenPieces = () => {
-        this.setState(prevState => ({bought: prevState.bought - 10}));
+    removePieces = () => {
+        const amount = this.state.productType === 'capsule' ? 10 : 1;
+        this.setState(prevState => ({bought: prevState.bought - amount}));
+    }
+    defineProductType = () => {
+        switch (this.props.item.product_type) {
+            case 'capsule':
+                this.setState({productType: 'capsule'});
+                break;
+            case 'set':
+                this.setState({productType: 'set'});
+                break;
+            default:
+                this.setState({productType: 'capsule'});
+        }
+    }
+    componentDidMount() {
+        this.defineProductType();
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.bought !== prevState.bought) {
@@ -29,6 +47,7 @@ class Capsule extends Component {
         }
         if (this.props.item !== prevProps.item) {
             this.setState({bought: this.props.item.qty, product: this.props.item});
+            this.defineProductType();
         }
     }
     render() {
@@ -50,11 +69,11 @@ class Capsule extends Component {
                     <span className="intensity-text">{lang.label_intensity}&nbsp;{item.intensity}</span>
                 </div>
                 <div className="buy-product">
-                    {!item.qty && <button className="btn_buy_now" onClick={this.addTenPieces}>{lang.btn_buy_now}</button>}
+                    {!item.qty && <button className="btn_buy_now" onClick={this.addPieces}>{lang.btn_buy_now}</button>}
                     {item.qty > 0 && <div className="quantity-action">
-                        <img src={remove_10.default} alt="" onClick={this.removeTenPieces} />
+                        <img src={remove_10.default} alt="" onClick={this.removePieces} />
                         <span>{item.qty}</span>
-                        <img src={add_10.default} alt="" onClick={this.addTenPieces} />
+                        <img src={add_10.default} alt="" onClick={this.addPieces} />
                     </div>}
                 </div>
             </li>

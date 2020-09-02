@@ -11,6 +11,7 @@ export default {
     serial_where_to_find: 'Where can I find it?',
     btn_confirm: 'confirm',
     btn_continue: 'continue',
+    btn_back: 'back',
     error_serial: 'Wrong serial number',
     serial_number_label: 'machine serial number',
     label_help_in_touch: 'Need help? ',
@@ -57,5 +58,10 @@ export default {
     label_capsules_total: 'capsules total',
     label_subtotal: 'Subtotal',
     label_packs: 'packs',
-    label_your_benefits: 'your benefits'
+    label_your_benefits: 'your benefits',
+    label_cup_size: 'Cup size:',
+    label_comparable: 'Comparable coffee profiles:',
+    label_ingredients_allergens: 'Ingredients & allergens',
+    label_net_weight: 'NET WEIGHT (FOR 10 CAPSULES)',
+    label_set_selection: 'This selection includes:'
 }

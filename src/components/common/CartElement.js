@@ -3,16 +3,34 @@ import React, {Component} from 'react';
 class CartElement extends Component {
     state = {
         product: this.props.item,
-        quantity: this.props.item.qty
+        quantity: this.props.item.qty,
+        productType: 'capsule'
     }
-    addTenPieces = () => {
-        this.setState(prevState => ({quantity: prevState.quantity + 10}));
+    addPieces = () => {
+        const amount = this.state.productType === 'capsule' ? 10 : 1;
+        this.setState(prevState => ({quantity: prevState.quantity + amount}));
     }
-    removeTenPieces = () => {
-        this.setState(prevState => ({quantity: prevState.quantity - 10}));
+    removePieces = () => {
+        const amount = this.state.productType === 'capsule' ? 10 : 1;
+        this.setState(prevState => ({quantity: prevState.quantity - amount}));
     }
     removeFromCart = () => {
         this.setState({quantity: 0});
+    }
+    defineProductType = () => {
+        switch (this.props.item.product_type) {
+            case 'capsule':
+                this.setState({productType: 'capsule'});
+                break;
+            case 'set':
+                this.setState({productType: 'set'});
+                break;
+            default:
+                this.setState({productType: 'capsule'});
+        }
+    }
+    componentDidMount() {
+        this.defineProductType();
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.quantity !== prevState.quantity) {
@@ -38,13 +56,18 @@ class CartElement extends Component {
                     <div className="main-part-inner">
                         <div className="main-part-info">
                             <p className="element-name">{item.title}</p>
-                            <small>{item.qty / 10} {item.qty !== 10 ? lang.label_capsule_sleeve_plural : lang.label_capsule_sleeve_single} {item.qty} {lang.label_capsules_total}</small>
+                            <small>
+                                {item.product_type === 'capsule' ? item.qty / 10 : (item.qty * item.capsule_count) / 10}&nbsp;
+                                {item.qty !== 10 ? lang.label_capsule_sleeve_plural : lang.label_capsule_sleeve_single}&nbsp;
+                                {item.product_type === 'capsule' ? item.qty : item.qty * item.capsule_count}&nbsp;
+                                {lang.label_capsules_total}
+                            </small>
                         </div>
                         <div className="main-part-action">
                             <div className="quantity-action">
-                                <img src={remove_10.default} alt="" onClick={this.removeTenPieces} />
+                                <img src={remove_10.default} alt="" onClick={this.removePieces} />
                                 <span>{quantity}</span>
-                                <img src={add_10.default} alt="" onClick={this.addTenPieces} />
+                                <img src={add_10.default} alt="" onClick={this.addPieces} />
                             </div>
                         </div>
                     </div>

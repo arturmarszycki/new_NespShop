@@ -37,3 +37,26 @@
     }
   }
 }
+@mixin intensity {
+  .intensity-info {
+    margin-bottom: 10px;
+    .intensity-graphic {
+      height: 12px;
+      .int-square {
+        display: inline-block;
+        width: 2px;
+        height: 8px;
+        margin-right: 2px;
+        background-color: #ddd;
+      }
+      .active-square {
+        background-color: $color-brown;
+      }
+    }
+    .intensity-text {
+      text-transform: capitalize;
+      color: $color-brown;
+      font-size: 11px;
+    }
+  }
+}

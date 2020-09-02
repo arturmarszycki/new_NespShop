@@ -35,7 +35,7 @@ class Shop extends React.Component {
     }
     render() {
         const {height, isFixed} = this.state;
-        const {shop, lang, updateCart, showDetails} = this.props;
+        const {shop, lang, updateCart, showDetails, activateSection, cart} = this.props;
         if (shop.length) {
             const icon_filters = require('../../images/icon_filters.png');
             const category_9 = shop.filter(el => el.id_shop_category === 9);
@@ -58,6 +58,11 @@ class Shop extends React.Component {
                         {isFixed && <div className="block-frame-plug">{}</div>}
                         <div className="products">
                             {categories.map(list => <Category key={list[0].id_shop_category} list={list} lang={lang} updateCart={updateCart} shop={shop} showDetails={showDetails} />)}
+                        </div>
+                        <div className="shop-actions">
+                            <button className="btn_back_to_machine" onClick={() => activateSection(1)}>{lang.btn_back}</button>
+                            {cart.length === 0 && <button className="btn_go_to_registration btn_disabled">{lang.btn_continue}</button>}
+                            {cart.length > 0 && <button className="btn_go_to_registration" onClick={() => activateSection(3)}>{lang.btn_continue}</button>}
                         </div>
                     </div>
                 </AnimateHeight>

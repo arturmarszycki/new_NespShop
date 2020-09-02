@@ -18,7 +18,7 @@ const sections = [
 ];
 class Layout extends React.Component {
     state = {
-        active: 2,
+        active: 1,
         modal_help: false,
         basket: false,
         details: null
@@ -64,12 +64,20 @@ class Layout extends React.Component {
                         shop={shop}
                         getData={getData}
                         showDetails={this.showDetails}
+                        cart={cart}
                     />)}
                 </div>
                 <HelpAction lang={lang} showHelpModal={this.showHelpModal} />
-                {modal_help && <ModalFrame hideModal={this.hideHelpModal}><GetInTouch lang={lang} /></ModalFrame>}
                 {basket && <ModalFrame hideModal={this.hideBasket}><Cart lang={lang} cart={cart} updateCart={updateShop} /></ModalFrame>}
-                {details && <ModalFrame hideModal={this.hideDetails}><Details lang={lang} item={details} /></ModalFrame>}
+                {details && <ModalFrame hideModal={this.hideDetails}><Details
+                    lang={lang}
+                    item={shop.filter(el => el.id_shop_product === details.id_shop_product)[0]}
+                    updateCart={updateShop}
+                    showHelpModal={this.showHelpModal}
+                    fullData={shop}
+                    showDetails={this.showDetails}
+                /></ModalFrame>}
+                {modal_help && <ModalFrame hideModal={this.hideHelpModal}><GetInTouch lang={lang} /></ModalFrame>}
                 <Footer />
             </div>
         )
