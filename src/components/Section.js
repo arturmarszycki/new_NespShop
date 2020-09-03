@@ -1,7 +1,7 @@
 import React from 'react';
 import Machine from '../flow/Machine';
 import Shop from './Shop';
-import Customer from './Customer';
+import Customer from '../flow/Customer';
 import Summary from './Summary';
 
 class Section extends React.Component {
@@ -13,7 +13,7 @@ class Section extends React.Component {
             case 2:
                 return <Shop lang={lang} updateCart={updateCart} shop={shop} getData={getData} showDetails={showDetails} activateSection={activateSection} cart={cart} />;
             case 3:
-                return <Customer lang={lang} />;
+                return <Customer lang={lang} activateSection={activateSection} />;
             case 4:
                 return <Summary lang={lang} />;
             default:

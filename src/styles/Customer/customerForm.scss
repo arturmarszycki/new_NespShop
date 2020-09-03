@@ -1,0 +1,127 @@
+@import '../variables', '../mixins';
+.customer-form {
+  .customer-form-label {
+    font-family: 'LucasMedium', sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  form {
+    .input-checkbox {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .checkbox-frame {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 100%;
+          outline: none;
+        }
+        .check-graphic {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-green;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          pointer-events: none;
+          img {
+            width: 60%;
+          }
+        }
+      }
+      label {
+        font-size: 12px;
+        max-width: calc(100% - 32px);
+        display: inline-block;
+      }
+    }
+    .chb-special {
+      .checkbox-frame {
+        border: 1px solid $color-green;
+      }
+      label {
+        font-family: 'LucasMedium', sans-serif;
+      }
+    }
+    .chb-term {
+      label {
+        max-width: calc(75% - 32px);
+        color: $color-brown;
+      }
+    }
+    .input-select {
+      position: relative;
+      margin-bottom: 20px;
+      @include form_label;
+      @include select_w_arrow;
+    }
+    .input-text {
+      position: relative;
+      margin-bottom: 20px;
+      @include form_label;
+      input {
+        width: 100%;
+        height: 48px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        padding: 20px 16px 6px 16px;
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+    }
+    .inputs50 {
+      display: flex;
+      justify-content: space-between;
+      .input-text {
+        width: 48%;
+      }
+    }
+    .customer-form-info {
+      color: #333;
+      padding-left: 32px;
+      margin-bottom: 20px;
+      font-size: 12px;
+      font-family: 'LucasLight', sans-serif;
+    }
+    .customer-actions {
+      padding: 30px 0 20px 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      button {
+        @include btn_green;
+      }
+      .btn_back_to_shop {
+        margin-right: 20px;
+        background-color: transparent;
+        color: #000;
+        border: 1px solid $color-green;
+      }
+      .btn_go_to_summary {
+        border-radius: 22px;
+        height: 44px;
+        line-height: 44px;
+        padding: 0 50px;
+        font-size: 15px;
+      }
+      .btn_disabled {
+        background-color: #ddd;
+      }
+    }
+  }
+}

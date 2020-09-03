@@ -3,12 +3,15 @@ import AnimateHeight from 'react-animate-height';
 import Banner from './extras/banner';
 import CategoryBlock from './CategoryBlock';
 import Category from './Category';
+import ModalFrame from "../common/ModalFrame";
+import Filters from './Filters';
 import '../../styles/Shop/shop.scss';
 
 class Shop extends React.Component {
     state = {
         height: 0,
-        isFixed: false
+        isFixed: false,
+        filtersActive: false
     }
     toggle = () => {
         this.setState({height: this.state.height === 0 ? 'auto' : 0});
@@ -23,6 +26,12 @@ class Shop extends React.Component {
             this.setState({isFixed: false});
         }
     }
+    showFilters = () => {
+        this.setState({filtersActive: true});
+    }
+    hideFilters = () => {
+        this.setState({filtersActive: false});
+    }
     async componentDidMount() {
         this.toggle();
         await this.props.getData();
@@ -34,7 +43,7 @@ class Shop extends React.Component {
         document.removeEventListener('scroll', this.trackScrolling);
     }
     render() {
-        const {height, isFixed} = this.state;
+        const {height, isFixed, filtersActive} = this.state;
         const {shop, lang, updateCart, showDetails, activateSection, cart} = this.props;
         if (shop.length) {
             const icon_filters = require('../../images/icon_filters.png');
@@ -50,8 +59,9 @@ class Shop extends React.Component {
                         <p className="shop-main-label">{lang.shop_main_label}</p>
                         <Banner />
                         <div className="filters-part" id="filters">
-                            <img src={icon_filters.default} alt="" />
+                            <img src={icon_filters.default} alt="" onClick={this.showFilters} />
                         </div>
+                        {filtersActive && <ModalFrame hideModal={this.hideFilters}><Filters lang={lang} /></ModalFrame>}
                         <div className={isFixed ? 'category-block-frame el-fixed' : 'category-block-frame'} id="category_block">
                             <CategoryBlock categories={categories} lang={lang} />
                         </div>

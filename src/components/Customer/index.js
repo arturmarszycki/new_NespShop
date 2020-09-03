@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimateHeight from 'react-animate-height';
+import CustomerForm from "./CustomerForm";
 
 class Customer extends React.Component {
     state = {
@@ -13,9 +14,10 @@ class Customer extends React.Component {
     }
     render() {
         const {height} = this.state;
+        const {lang, submitCustomerData, activateSection} = this.props;
         return (
             <AnimateHeight duration={500} height={height}>
-                <p>Customer</p>
+                <CustomerForm lang={lang} submitCustomerData={submitCustomerData} activateSection={activateSection} />
             </AnimateHeight>
         )
     }
