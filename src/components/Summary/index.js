@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimateHeight from 'react-animate-height';
+import SummaryFrame from "./SummaryFrame";
 
 class Summary extends React.Component {
     state = {
@@ -13,9 +14,10 @@ class Summary extends React.Component {
     }
     render() {
         const {height} = this.state;
+        const {lang, cart, updateCart, activateSection, customerData} = this.props;
         return (
             <AnimateHeight duration={500} height={height}>
-                <p>Summary</p>
+                <SummaryFrame lang={lang} cart={cart} updateShop={updateCart} activateSection={activateSection} customerData={customerData} />
             </AnimateHeight>
         )
     }

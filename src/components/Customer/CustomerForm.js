@@ -3,6 +3,7 @@ import Input_text from './Input_text';
 import Input_select from './Input_select';
 import Input_checkbox from './Input_checkbox';
 import '../../styles/Customer/customerForm.scss';
+import Confirmation from "../common/Confirmation";
 
 class CustomerForm extends Component {
     state = {
@@ -27,8 +28,8 @@ class CustomerForm extends Component {
         this.setState({[input]: val}, () => this.validateForm());
     }
     validateForm = () => {
-        const {customer_title, name, surname, zip_code, city, street_building, flat, floor} = this.state;
-        if (customer_title && name && surname && zip_code && city && street_building && flat && floor) {
+        const {customer_title, name, surname, zip_code, city, street_building, flat, floor, country, phone, email} = this.state;
+        if (customer_title && name && surname && zip_code && city && street_building && flat && floor && country && phone && email) {
             this.setState({form_ok: true});
         } else {
             this.setState({form_ok: false});
@@ -36,8 +37,8 @@ class CustomerForm extends Component {
     }
     submitForm = e => {
         e.preventDefault();
-        const {customer_title, name, surname, zip_code, city, street_building, flat, floor, form_ok} = this.state;
-        const data = {customer_title, name, surname, zip_code, city, street_building, flat, floor};
+        const {customer_title, name, surname, zip_code, city, street_building, flat, floor, country, phone, email, form_ok} = this.state;
+        const data = {customer_title, name, surname, zip_code, city, street_building, flat, floor, country, phone, email};
         if (form_ok) {
             this.props.submitCustomerData(data);
             this.props.activateSection(4);
@@ -71,11 +72,7 @@ class CustomerForm extends Component {
                     <p className="customer-form-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam asperiores assumenda at cum delectus deleniti distinctio, dolores esse est iure labore natus, neque optio quos recusandae reiciendis rerum unde.</p>
                     <Input_checkbox label={lang.form_label_confirm_terms} name="confirm_terms" saveValue={this.saveValue} chb_term />
                     <Input_checkbox label={lang.form_label_confirm_policy} name="confirm_policy" saveValue={this.saveValue} chb_term />
-                    <div className="customer-actions">
-                        <button className="btn_back_to_shop" onClick={() => activateSection(2)}>{lang.btn_back}</button>
-                        {!form_ok && <button className="btn_go_to_summary btn_disabled">{lang.btn_continue}</button>}
-                        {form_ok && <button className="btn_go_to_summary" onClick={this.submitForm}>{lang.btn_continue}</button>}
-                    </div>
+                    <Confirmation lang={lang} handleConfirm={this.submitForm} handleBack={() => activateSection(2)} readyToConfirm={form_ok} />
                 </form>
             </div>
         );

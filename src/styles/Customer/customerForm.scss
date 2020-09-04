@@ -98,30 +98,5 @@
       font-size: 12px;
       font-family: 'LucasLight', sans-serif;
     }
-    .customer-actions {
-      padding: 30px 0 20px 0;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      button {
-        @include btn_green;
-      }
-      .btn_back_to_shop {
-        margin-right: 20px;
-        background-color: transparent;
-        color: #000;
-        border: 1px solid $color-green;
-      }
-      .btn_go_to_summary {
-        border-radius: 22px;
-        height: 44px;
-        line-height: 44px;
-        padding: 0 50px;
-        font-size: 15px;
-      }
-      .btn_disabled {
-        background-color: #ddd;
-      }
-    }
   }
 }

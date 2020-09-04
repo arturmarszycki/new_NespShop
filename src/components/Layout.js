@@ -46,7 +46,7 @@ class Layout extends React.Component {
     }
     render() {
         const {active, modal_help, basket, details} = this.state;
-        const {shop, getData, updateShop} = this.props;
+        const {shop, getData, updateShop, customerData} = this.props;
         const cart = shop.filter(el => el.qty !== 0);
         return (
             <div className="container">
@@ -65,10 +65,11 @@ class Layout extends React.Component {
                         getData={getData}
                         showDetails={this.showDetails}
                         cart={cart}
+                        customerData={customerData}
                     />)}
                 </div>
                 <HelpAction lang={lang} showHelpModal={this.showHelpModal} />
-                {basket && <ModalFrame hideModal={this.hideBasket}><Cart lang={lang} cart={cart} updateCart={updateShop} /></ModalFrame>}
+                {basket && <ModalFrame hideModal={this.hideBasket}><Cart lang={lang} cart={cart} updateCart={updateShop} bag /></ModalFrame>}
                 {details && <ModalFrame hideModal={this.hideDetails}><Details
                     lang={lang}
                     item={shop.filter(el => el.id_shop_product === details.id_shop_product)[0]}

@@ -6,6 +6,7 @@ import Category from './Category';
 import ModalFrame from "../common/ModalFrame";
 import Filters from './Filters';
 import '../../styles/Shop/shop.scss';
+import Confirmation from "../common/Confirmation";
 
 class Shop extends React.Component {
     state = {
@@ -69,11 +70,7 @@ class Shop extends React.Component {
                         <div className="products">
                             {categories.map(list => <Category key={list[0].id_shop_category} list={list} lang={lang} updateCart={updateCart} shop={shop} showDetails={showDetails} />)}
                         </div>
-                        <div className="shop-actions">
-                            <button className="btn_back_to_machine" onClick={() => activateSection(1)}>{lang.btn_back}</button>
-                            {cart.length === 0 && <button className="btn_go_to_registration btn_disabled">{lang.btn_continue}</button>}
-                            {cart.length > 0 && <button className="btn_go_to_registration" onClick={() => activateSection(3)}>{lang.btn_continue}</button>}
-                        </div>
+                        <Confirmation lang={lang} handleConfirm={() => activateSection(3)} handleBack={() => activateSection(1)} readyToConfirm={cart.length > 0} />
                     </div>
                 </AnimateHeight>
             )

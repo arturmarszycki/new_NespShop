@@ -6,7 +6,7 @@ import Summary from './Summary';
 
 class Section extends React.Component {
     renderSection = id => {
-        const {lang, activateSection, updateCart, shop, getData, showDetails, cart} = this.props;
+        const {lang, activateSection, updateCart, shop, getData, showDetails, cart, customerData} = this.props;
         switch(id) {
             case 1:
                 return <Machine lang={lang} activateSection={activateSection} />;
@@ -15,7 +15,7 @@ class Section extends React.Component {
             case 3:
                 return <Customer lang={lang} activateSection={activateSection} />;
             case 4:
-                return <Summary lang={lang} />;
+                return <Summary lang={lang} cart={cart} updateCart={updateCart} activateSection={activateSection} customerData={customerData} />;
             default:
                 return null;
         }

@@ -13,7 +13,7 @@ class InputSelect extends Component {
                 this.setState({selected: '0'});
                 break;
             case 'country':
-                this.setState({selected: 'nl'});
+                this.setState({selected: 'nl'}, () => this.props.saveValue(this.state.selected, this.props.name));
                 break;
             default:
                 this.setState({selected: 0});

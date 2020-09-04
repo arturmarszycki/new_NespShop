@@ -85,4 +85,36 @@
       font-size: 18px;
     }
   }
+  .summary-prices {
+    border-bottom: 1px solid #ddd;
+    padding: 40px 0 10px 0;
+    .prices-row {
+      display: flex;
+      justify-content: space-between;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+    .prices-benefit {
+      span {
+        font-family: 'LucasSemiBold', sans-serif;
+      }
+    }
+    .prices-total {
+      padding: 30px 0 5px 0;
+      span {
+        &:last-of-type {
+          font-family: 'LucasSemiBold', sans-serif;
+          color: $color-green;
+        }
+      }
+    }
+    .prices-info {
+      text-align: right;
+      p {
+        font-size: 11px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+    }
+  }
 }
