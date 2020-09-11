@@ -6,12 +6,12 @@ import Summary from './Summary';
 
 class Section extends React.Component {
     renderSection = id => {
-        const {lang, activateSection, updateCart, shop, getData, showDetails, cart, customerData} = this.props;
+        const {lang, activateSection, updateCart, shop, getData, showDetails, cart, customerData, showHelpModal} = this.props;
         switch(id) {
             case 1:
                 return <Machine lang={lang} activateSection={activateSection} />;
             case 2:
-                return <Shop lang={lang} updateCart={updateCart} shop={shop} getData={getData} showDetails={showDetails} activateSection={activateSection} cart={cart} />;
+                return <Shop lang={lang} updateCart={updateCart} shop={shop} getData={getData} showDetails={showDetails} activateSection={activateSection} cart={cart} showHelpModal={showHelpModal} />;
             case 3:
                 return <Customer lang={lang} activateSection={activateSection} />;
             case 4:

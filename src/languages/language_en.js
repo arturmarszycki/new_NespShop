@@ -91,5 +91,18 @@ export default {
     label_includes: 'includes a',
     label_ecotax: 'ecotax',
     summary_order_info: 'Your order will be delivered within 5 working days after positive order validation. You can pay for the order with credit card on delivery.',
-    label_free: 'FREE'
+    label_free: 'FREE',
+    filters_reset_all: 'reset all',
+    filters_label_sort: 'sort results by',
+    filters_label_filter: 'filter by',
+    filters_intensity: 'Intensity',
+    filters_cup_size: 'Best served as',
+    filters_how_to_drink: 'How do I drink my coffee',
+    filters_characteristics: 'Characteristics',
+    filters_btn_see: 'see',
+    filters_btn_results: 'results',
+    filters_label_light: 'Light',
+    filters_label_mild: 'Mild',
+    filters_label_intense: 'Intense',
+    filters_label_very_long: 'Very long'
 }

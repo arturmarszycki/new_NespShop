@@ -66,6 +66,7 @@ class Layout extends React.Component {
                         showDetails={this.showDetails}
                         cart={cart}
                         customerData={customerData}
+                        showHelpModal={this.showHelpModal}
                     />)}
                 </div>
                 <HelpAction lang={lang} showHelpModal={this.showHelpModal} />
