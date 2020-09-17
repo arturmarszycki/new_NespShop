@@ -18,7 +18,7 @@ const sections = [
 ];
 class Layout extends React.Component {
     state = {
-        active: 1,
+        active: 3,
         modal_help: false,
         basket: false,
         details: null

@@ -69,6 +69,8 @@ export default {
     form_label_title: 'title',
     form_label_name: 'name',
     form_label_surname: 'surname',
+    form_label_company_name: 'company name',
+    form_label_tax_id: 'TAX ID',
     form_label_zip_code: 'zip code',
     form_label_city: 'city',
     form_label_street_building: 'street and building',
@@ -104,5 +106,5 @@ export default {
     filters_label_light: 'Light',
     filters_label_mild: 'Mild',
     filters_label_intense: 'Intense',
-    filters_label_very_long: 'Very long'
+    filters_label_very_long: 'Very long',
 }

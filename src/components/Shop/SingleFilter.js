@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SingleFilterElement from "./SingleFilterElement";
 
 class SingleFilter extends Component {
     state = {
@@ -16,33 +17,31 @@ class SingleFilter extends Component {
         }
         addFilter(this.state.params, name);
     }
+    setAvailableParams = () => {
+        //console.log(this.state.params);
+        //console.log(this.props.result);
+    }
+    componentDidMount() {
+        this.setAvailableParams();
+    }
     componentDidUpdate(prevProps) {
-        const {params} = this.props;
+        const {params, result} = this.props;
         if (params !== prevProps.params) {
             this.setState({params});
         }
+        if (result !== prevProps.result) {
+            this.setAvailableParams();
+        }
     }
     render() {
-        const {header, name, options, criteria} = this.props;
+        const {header, name, options, criteria, result} = this.props;
         const {params} = this.state;
         return (
             <div className={`single-filter filter_${name}`}>
                 <p className="single-filter-title">{header}</p>
                 <ul className="filter-options">
                     {options.map(el => {
-                        return (
-                            <li
-                                key={el.name}
-                                rel={el.val}
-                                onClick={this.addParam}
-                                className={name === 'intensity' ? params.includes(el.val.join()) ? 'active' : '' : params.includes(el.val) ? 'active' : ''}
-                            >
-                                <span className="single-filter-name">
-                                    {name === 'intensity' ? `${el.name} (${el.val[0]}-${el.val[el.val.length - 1]})` : el.name}
-                                </span>
-                                {/*{criteria.length > 0 && !criteria.includes(el.val) && <span className="filter-disabled" onClick={e => e.stopPropagation()}>{}</span>}*/}
-                            </li>
-                        )
+                        return <SingleFilterElement key={el.name} singleOption={el} name={name} params={params} addParam={this.addParam} />
                     })}
                 </ul>
             </div>

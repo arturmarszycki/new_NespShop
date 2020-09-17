@@ -62,12 +62,13 @@ class Filters extends Component {
         });
         this.setState({criteria: criteriaArray.filter((v, i, a) => a.indexOf(v) === i)}, () => this.handleFilters(currentResult));
     }
-    handleFilters = array => {
+    handleFilters = async array => {
         if (array.length === 0) {
-            this.setState({result: this.props.shopCapsules, criteria: []});
+            await this.setState({result: this.props.shopCapsules, criteria: []});
         } else {
-            this.setState({result: array});
+            await this.setState({result: array});
         }
+        //console.log(this.state.result);
     }
     resetFilters = () => {
         this.setState({intensity: [], result: this.props.shopCapsules, cup_size: [], how_to_drink: [], characteristics: [], criteria: []});
@@ -91,8 +92,8 @@ class Filters extends Component {
                     </span>
                 </div>
                 <h3 className="filters-label">{lang.filters_label_filter}</h3>
-                <SingleFilter header={lang.filters_intensity} options={this.options_intensity} name="intensity" addFilter={this.addFilterIntensity} params={intensity} criteria={criteria} />
-                <SingleFilter header={lang.filters_cup_size} options={this.options_cup_size} name="cup_size" addFilter={this.addFilterCupSize} params={cup_size} criteria={criteria} />
+                <SingleFilter header={lang.filters_intensity} options={this.options_intensity} name="intensity" addFilter={this.addFilterIntensity} params={intensity} criteria={criteria} result={result} />
+                <SingleFilter header={lang.filters_cup_size} options={this.options_cup_size} name="cup_size" addFilter={this.addFilterCupSize} params={cup_size} criteria={criteria} result={result} />
                 <SingleFilter header={lang.filters_how_to_drink} options={this.options_how_to_drink} name="how_to_drink" addFilter={this.addFilterIntensity} params={how_to_drink} criteria={criteria} />
                 <SingleFilter header={lang.filters_characteristics} options={this.options_characteristics} name="characteristics" addFilter={this.addFilterIntensity} params={characteristics} criteria={criteria} />
                 <div className="filters-results">

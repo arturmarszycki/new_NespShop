@@ -12,7 +12,7 @@ class Shop extends React.Component {
     state = {
         height: 0,
         isFixed: false,
-        filtersActive: true,
+        filtersActive: false,
         shopItems: []
     }
     toggle = () => {
